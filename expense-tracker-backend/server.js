@@ -1,6 +1,6 @@
 require('dotenv').config();
 const connectDB = require('./src/config/db');
-const app = require('./app'); // Import the Express app setup
+const app = require('./src/app'); // Import the Express app setup
 const colors = require('colors'); // optional, for colorful console logs
 
 // Server Configuration
