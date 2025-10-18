@@ -5,6 +5,8 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 
+app.use(express.json());
+
 const userRoutes = require('./routes/userRoutes');
 const sourceRoutes = require('./routes/sourceRoutes');
 const incomeRoutes = require('./routes/incomeRoutes');
@@ -20,7 +22,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
