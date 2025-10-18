@@ -34,6 +34,8 @@ app.use('/api/accounts', accountRoutes);
 app.use('/api/budgets', budgetRoutes);
 app.use('/api/reports', reportRoutes);
 
+app.get('/api', (req, res) => res.send('API running'));
+
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: Date.now() }));
 
