@@ -1,4 +1,3 @@
-// src/controllers/incomeController.js
 const Income = require('../models/incomeModel');
 const Source = require('../models/sourceModel');
 

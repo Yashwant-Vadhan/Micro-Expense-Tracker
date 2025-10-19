@@ -1,4 +1,3 @@
-// src/controllers/accountController.js
 const Account = require('../models/accountModel');
 
 exports.createAccount = async (req, res) => {

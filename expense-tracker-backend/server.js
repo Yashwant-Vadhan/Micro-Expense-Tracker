@@ -2,6 +2,17 @@ require('dotenv').config();
 const connectDB = require('./src/config/db');
 const app = require('./src/app'); // Import the Express app setup
 const colors = require('colors'); // optional, for colorful console logs
+const bcrypt = require('bcryptjs');
+// console.log("✅ BcryptJS version:", bcrypt.version);
+
+//To test bcrypt
+
+// (async () => {
+//   const hash = await bcrypt.hash("123456", 10);
+//   const result = await bcrypt.compare("123456", hash);
+//   console.log("🔍 Bcrypt test hash:", hash);
+//   console.log("✅ Bcrypt test compare result:", result);
+// })();
 
 // Server Configuration
 const PORT = process.env.PORT || 5000;
