@@ -3,7 +3,7 @@ const Source = require('../models/sourceModel');
 
 exports.createIncome = async (req, res) => {
   try {
-    const {amount,description,date,source_id,account_id} = req.body;
+    const { amount, description, date, source_id, account_id } = req.body;
     if (!amount || !source_id || !date) return res.status(400).json({ message: 'amount, source_id and date required' });
 
     // ensure source belongs to user

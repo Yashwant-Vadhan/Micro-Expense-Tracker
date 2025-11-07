@@ -73,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
 //   console.log('Stored hash:', user.password);
-  const isMatch = await bcrypt.compare(password, user.password);
+//   const isMatch = await bcrypt.compare(password, user.password);
 //   console.log('Compare result:', isMatch);
 //   console.log('--- END DEBUG ---');
 

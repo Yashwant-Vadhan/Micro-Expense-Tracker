@@ -3,7 +3,7 @@ const Source = require('../models/sourceModel');
 // Create source (user-specific)
 exports.createSource = async (req, res) => {
   try {
-    const {name, description} = req.body;
+    const { name, description } = req.body;
     if (!name) return res.status(400).json({ message: 'Name required' });
 
     const source = await Source.create({ name, description, user_id: req.user._id });
