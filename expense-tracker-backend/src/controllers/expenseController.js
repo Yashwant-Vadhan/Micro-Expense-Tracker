@@ -73,7 +73,7 @@ exports.deleteExpense = async (req, res) => {
     const exp = await Expense.findById(req.params.id);
     if (!exp || exp.user_id.toString() !== req.user._id.toString()) return res.status(404).json({ message: 'Expense not found' });
 
-    await exp.remove();
+    await exp.deleteOne();
     res.json({ message: 'Expense deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

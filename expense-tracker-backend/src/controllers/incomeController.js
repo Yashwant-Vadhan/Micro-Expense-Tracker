@@ -75,7 +75,7 @@ exports.deleteIncome = async (req, res) => {
     const inc = await Income.findById(req.params.id);
     if (!inc || inc.user_id.toString() !== req.user._id.toString()) return res.status(404).json({ message: 'Income not found' });
 
-    await inc.remove();
+    await inc.deleteOne();
     res.json({ message: 'Income deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

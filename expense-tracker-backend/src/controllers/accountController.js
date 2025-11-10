@@ -71,7 +71,7 @@ exports.deleteAccount = async (req, res) => {
       return res.status(404).json({ message: 'Account not found' });
     }
 
-    await acc.remove();
+    await acc.deleteOne();
     res.json({ message: 'Account deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

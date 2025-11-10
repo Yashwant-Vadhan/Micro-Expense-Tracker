@@ -57,7 +57,7 @@ exports.deleteBudget = async (req, res) => {
     const bud = await Budget.findById(req.params.id);
     if (!bud || bud.user_id.toString() !== req.user._id.toString()) return res.status(404).json({ message: 'Budget not found' });
 
-    await bud.remove();
+    await bud.deleteOne();
     res.json({ message: 'Budget deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

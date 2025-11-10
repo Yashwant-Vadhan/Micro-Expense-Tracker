@@ -51,7 +51,7 @@ exports.deleteSource = async (req, res) => {
     const src = await Source.findById(req.params.id);
     if (!src || src.user_id.toString() !== req.user._id.toString()) return res.status(404).json({ message: 'Source not found' });
 
-    await src.remove();
+    await src.deleteOne();
     res.json({ message: 'Source deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
