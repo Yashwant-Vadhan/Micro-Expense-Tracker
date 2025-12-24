@@ -1,0 +1,107 @@
+/* reports.css — layout tuned to 3-column chart arrangement */
+
+/* Theme vars (you may already have these globally) */
+:root {
+  --bg: #f4f6f9;
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --accent: #2563eb;
+  --accent-600: #1e40af;
+  --radius: 12px;
+  --card-padding: 18px;
+  --glass-shadow: 0 10px 30px rgba(15,23,42,0.06);
+}
+
+/* Page root */
+.reports-root {
+  padding: 20px 24px;
+  min-height: calc(100vh - 40px);
+  background: var(--bg);
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+/* keep header fixed; .page-header-fixed is used in your global CSS */
+.page-header-fixed { position: fixed; top: 0; left: 0; right: 0; z-index: 1200; }
+
+/* content container: ensure space under fixed header */
+.report-page.container {
+  padding-top: 86px; /* adjust to header height */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* top controls */
+.report-top-controls-card {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+  padding:16px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+.controls-left { display:flex; align-items:center; gap:10px; flex-wrap:wrap; min-width:280px; }
+.controls-right { display:flex; align-items:center; gap:10px; }
+
+/* small inputs */
+.input.small-input { height:40px; padding:8px 10px; border-radius:8px; border:1px solid rgba(15,23,42,0.06); background:transparent; }
+
+/* Buttons (simple) */
+.btn { padding:10px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:600; color:#fff; background:linear-gradient(90deg,var(--accent),var(--accent-600)); box-shadow:0 8px 20px rgba(37,99,235,0.12); }
+.btn.btn-secondary { background:#f3f7ff; color:var(--accent-600); box-shadow:none; border:1px solid rgba(37,99,235,0.06); }
+.btn.btn-ghost { background:transparent; color:var(--muted); border:1px solid rgba(15,23,42,0.04); }
+.btn.btn-pdf { background: #111827; }
+
+/* 3-column grid layout */
+.report-three-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr 360px; /* left | center | right */
+  gap: 20px;
+  align-items: start;
+}
+
+/* left/center column wrappers */
+.report-col-left, .report-col-center { display:flex; flex-direction:column; gap:18px; }
+.report-col-right { display:flex; flex-direction:column; gap:16px; }
+
+/* large chart card */
+.large-chart-card { min-height: 420px; display:flex; flex-direction:column; gap:12px; padding:18px; }
+
+/* tuned chart wrap sizes */
+.chart-wrap { height: 360px; width:100%; }
+.chart-wrap-left { height: 360px; }
+.chart-wrap-center { height: 420px; } /* center emphasis: taller */
+.chart-wrap-small { height: 200px; }
+
+/* small cards on right side */
+.small-card { min-height: 200px; padding:16px; }
+
+/* chart title style */
+.chart-title { font-size:1.05rem; margin:0 0 10px 0; font-weight:700; color:var(--text); }
+
+/* no-data fallback */
+.no-data { color:var(--muted); padding:16px; text-align:center; min-height:200px; display:flex; align-items:center; justify-content:center; }
+
+/* PDF capture helper */
+.pdf-capture * { animation:none !important; transition:none !important; }
+
+/* Responsive: collapse to single column on small screens */
+@media (max-width: 1024px) {
+  .report-three-grid { grid-template-columns: 1fr; }
+  .chart-wrap-center { height: 320px; }
+  .chart-wrap { height: 300px; }
+  .report-page.container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* narrow screens tweaks */
+@media (max-width: 520px) {
+  .report-top-controls-card { flex-direction:column; align-items:stretch; gap:10px; }
+  .chart-wrap { height: 260px; }
+  .chart-wrap-center { height: 280px; }
+}

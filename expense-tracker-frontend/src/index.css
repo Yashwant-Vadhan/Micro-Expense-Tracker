@@ -1,0 +1,287 @@
+/* ===============================
+   Theme variables & reset
+   (clean, single source of truth)
+   =============================== */
+:root{
+  --bg: #f5f7fb;
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --primary: #2b6ef6;
+  --accent: #06b6d4;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(15,23,42,0.04);
+  --radius: 12px;
+  --max-width: 1200px;
+  --shadow-lg: 0 10px 30px rgba(2,6,23,0.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{height:100%}
+body{
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* ===============================
+   Shared helpers
+   =============================== */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:96px 18px 40px; /* top accounts for sticky header */
+}
+
+/* Card common */
+.card{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow-lg);
+  border:1px solid rgba(15,23,42,0.04);
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(90deg,#3b82f6,#2563eb);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+.btn:hover{ transform:translateY(-1px); box-shadow:0 8px 20px rgba(37,99,235,0.14); }
+.btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+/* Button variants */
+.btn.btn-secondary{ background:linear-gradient(180deg,var(--primary),#1f57d9); color:#fff; }
+.btn.btn-ghost{ background:transparent; border:1px solid rgba(43,110,246,0.2); color:var(--primary); box-shadow:none; }
+.btn.btn-danger{ background:var(--danger); color:#fff; }
+.btn.btn-pdf{ background:#111827; color:#fff; padding:10px 12px; border-radius:10px; }
+
+/* Full width helper */
+.full{ width:100%; }
+
+/* Inputs */
+.input, select, textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #e6eefc;
+  background:transparent;
+  font-size:14px;
+  transition:box-shadow .15s ease, border-color .15s ease;
+}
+.input:focus, select:focus, textarea:focus{
+  outline:none;
+  border-color:rgba(43,110,246,0.4);
+  box-shadow:0 4px 20px rgba(43,110,246,0.08);
+}
+
+/* Text helpers */
+.small{ font-size:13px; }
+.muted{ color:var(--muted); font-size:0.95rem; }
+.label{ font-size:12px; color:var(--muted); display:block; margin-bottom:6px; }
+
+/* Nav button fallback */
+.nav-btn{ text-decoration:none; color:var(--primary); padding:6px 14px; border:1px solid rgba(219,234,254,1); border-radius:8px; font-weight:600; transition:all .2s; }
+.nav-btn:hover{ background:#2563eb; color:#fff; border-color:#2563eb; }
+.nav-btn.active{ background:#2563eb; color:#fff; border-color:#2563eb; }
+
+/* ===============================
+   Header (top navigation)
+   - `.app-header` (used inside Header.jsx)
+   - `.page-header-fixed` (wrapper for fixed behavior)
+   =============================== */
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(2,6,23,0.04);
+  box-shadow:0 6px 20px rgba(2,6,23,0.04);
+  padding:0.6rem 1rem;
+  z-index:1100;
+}
+
+/* If you wrap Header with .page-header-fixed use fixed positioning across pages */
+.page-header-fixed{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1200;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(6px);
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+/* Brand inside header */
+.app-brand{ font-weight:700; font-size:1.1rem; cursor:pointer; }
+
+/* ===============================
+   Dashboard layout
+   =============================== */
+.dashboard-wrap{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:22px;
+  align-items:start;
+}
+
+.dashboard-sidebar.card{
+  height:fit-content;
+  box-shadow:0 14px 30px rgba(2,6,23,0.04);
+}
+
+.dashboard-main{ padding-top:6px; }
+
+.cards-grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:18px;
+  align-items:start;
+}
+
+/* Balance styles */
+.balance-card .balance-amount{
+  font-size:30px;
+  font-weight:800;
+  margin-top:6px;
+}
+.card-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.mini-chart{ width:220px; height:70px; }
+
+/* Table styles */
+.table{ width:100%; border-collapse:collapse; }
+.table th, .table td{ padding:10px 8px; border-bottom:1px solid rgba(15,23,42,0.04); font-size:14px; text-align:left; }
+.table th{ color:var(--muted); }
+
+/* Progress bar */
+.progress-track{ height:10px; background:#eef2f7; border-radius:999px; overflow:hidden; }
+.progress-fill{ height:100%; background:linear-gradient(90deg,var(--accent),var(--primary)); transition:width .35s ease; }
+
+/* Specific card helpers */
+.cards-grid .short-card, .cards-grid .recent-card, .cards-grid .balance-card{ border-radius:12px; }
+
+/* ===============================
+   Quick Add panel (compact)
+   =============================== */
+.quick-add-panel .tabs{ display:flex; gap:8px; margin-bottom:10px; }
+.quick-add-panel .tab{ padding:8px 12px; border-radius:8px; border:1px solid rgba(2,6,23,0.04); cursor:pointer; font-size:14px; }
+.quick-add-panel .tab.active{ background:linear-gradient(90deg,#eef6ff,#eaf8ff); border-color:rgba(43,110,246,0.2); color:var(--primary); }
+
+/* ===============================
+   Reports layout
+   =============================== */
+.reports-root{ padding:18px; background:transparent; }
+
+.report-main-grid{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:18px;
+  align-items:start;
+}
+.chart-title{ font-size:16px; margin-bottom:10px; font-weight:700; }
+.no-data{ color:var(--muted); padding:18px; }
+.large-chart-card{ min-height:380px; display:flex; flex-direction:column; }
+.chart-wrap{ height:320px; }
+.chart-wrap-small{ height:220px; }
+
+/* ===============================
+   QuickAdd page (detailed, scrollable left card)
+   =============================== */
+.page-content{ padding-top:86px; padding-bottom:48px; max-width:var(--max-width); margin:0 auto; }
+
+/* grid for quick add page: left narrow, right fluid */
+.quickadd-page .quickadd-grid{
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+/* left card expands and the inner form becomes scrollable */
+.quickadd-left .quickadd-card{
+  height:calc(100vh - 140px); /* header + breathing room */
+  min-height:520px;
+  display:flex;
+  flex-direction:column;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(14,30,37,0.06);
+}
+
+.quickadd-card .card-head{ margin-bottom:12px; }
+
+/* tabs inside quickadd */
+.quickadd-card .tabs-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+.quickadd-card .tab{
+  padding:8px 12px; border-radius:10px; border:1px solid rgba(2,6,23,0.06);
+  background:white; cursor:pointer; font-weight:600; font-size:0.95rem;
+}
+.quickadd-card .tab.active{ background:linear-gradient(90deg,#eef6ff,#eaf8ff); color:#1e4ed8; border-color:rgba(43,110,246,0.12); }
+
+/* form area scrolls if tall */
+.quickadd-form-area{
+  overflow:auto;
+  padding-right:6px;
+  margin-top:6px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* comfortable inputs inside form */
+.quickadd-form-area .input, .quickadd-form-area select, .quickadd-form-area textarea{
+  height:44px; padding:10px 12px; font-size:0.95rem; border-radius:8px;
+}
+.quickadd-form-area .btn{ min-width:120px; padding:10px 18px; font-weight:700; }
+
+/* right info card */
+.quickadd-right .card{ border-radius:12px; padding:20px; height:260px; }
+
+/* ===============================
+   Small UI tweaks & accessibility
+   =============================== */
+.small.muted, .muted{ color:var(--muted); font-size:0.95rem; }
+.range-sep{ margin:0 8px; color:var(--muted); }
+.footer-small{ font-size:13px; color:var(--muted); margin-top:12px; text-align:center; }
+
+/* focus states */
+.quickadd-card .input:focus, .quickadd-card select:focus, .quickadd-card textarea:focus{
+  outline:2px solid rgba(59,130,246,0.15);
+  box-shadow:0 4px 14px rgba(59,130,246,0.06);
+}
+
+/* ===============================
+   Responsive rules
+   =============================== */
+@media (max-width:1000px){
+  .container{ padding-top:72px; }
+  .dashboard-wrap{ grid-template-columns:1fr; }
+  .cards-grid{ grid-template-columns:1fr; }
+  .dashboard-sidebar{ display:block; order:0; width:100%; }
+  .mini-chart{ display:none; }
+  .page-content{ padding-top:100px; padding-left:16px; padding-right:16px; }
+  .quickadd-page .quickadd-grid{ grid-template-columns:1fr; }
+  .quickadd-left .quickadd-card{ height:auto; min-height:420px; }
+  .chart-wrap{ height:320px; }
+  .chart-wrap-small{ height:260px; }
+}
+
+@media (max-width:640px){
+  .container{ padding:72px 12px; }
+  .btn{ padding:8px 10px; }
+  .page-content{ padding-top:100px; padding-left:12px; padding-right:12px; }
+  .report-main-grid{ grid-template-columns:1fr; }
+}
+

@@ -1,0 +1,77 @@
+/* src/components/Header.css */
+/* Header layout, nav buttons and small responsive tweaks */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--card-bg, #ffffff);
+  border-bottom: 1px solid rgba(2,6,23,0.04);
+  box-shadow: 0 6px 30px rgba(15, 23, 42, 0.03);
+}
+
+/* left brand block */
+.app-header .brand {
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* nav area */
+.app-header .nav-area {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* Nav link button look */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(43,110,246,0.15);
+  background: transparent;
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all .18s ease;
+  min-width: 90px;
+}
+
+/* active link (NavLink will apply active class) */
+.nav-btn.active {
+  background: linear-gradient(90deg,#3b82f6,#1e3a8a);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.18);
+  border-color: transparent;
+}
+
+/* simple ghost button for logout */
+.btn.btn-danger {
+  background: linear-gradient(180deg,#f87171,#ef4444);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* small responsive: compress header on narrow screens */
+@media (max-width: 720px) {
+  .app-header {
+    padding: 0.6rem;
+    gap: 12px;
+  }
+  .nav-btn {
+    padding: 6px 8px;
+    min-width: 70px;
+    font-size: 0.92rem;
+  }
+  .app-header .brand { font-size: 0.95rem; }
+}
